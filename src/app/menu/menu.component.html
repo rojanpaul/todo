@@ -1,0 +1,19 @@
+<!-- TOP MENU Component 
+<br> -->
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div>
+            <a href="https://www.rojanpaul.com" class="navbar-brand">rojanpaul</a>
+        </div>
+        <ul class="navbar-nav">
+            <li><a routerLink="/welcome/Rojan" class="nav-link" *ngIf="hardcodedAuthentication.isUserLoggedIn()">Home</a></li>
+            <li><a routerLink="/todos" class="nav-link" *ngIf="hardcodedAuthentication.isUserLoggedIn()">Todos</a></li>
+        </ul>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a routerLink="/login" class="nav-link" *ngIf="!hardcodedAuthentication.isUserLoggedIn()">Login</a></li>
+            <li><a routerLink="/logout" class="nav-link" *ngIf="hardcodedAuthentication.isUserLoggedIn()">Logout</a></li>
+            <!-- (click)="hardcodedAuthentication.logout()" -->
+        </ul>
+    </nav>
+</header>
+<br><br>
