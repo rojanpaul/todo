@@ -23,23 +23,28 @@ export class TodoComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     // Below call is asynchronous. So the page loads before data will be available. To avoid this a empty object is to be created
     // and assigned to todo object
-    this.todo = new Todo(1, '', false, new Date());
-    this.todoServ.getTodoById('rojan', this.id).subscribe(
-      response => {
-        console.log('response by calling todo service');
-        console.log(response);
-        this.todo = response;
-      }
-    );
-  }
+    console.log(`method is called ${ this.id}`);
+    this.todo = new Todo(this.id, '', false, new Date());
+    if (this.id != -1) {   
+      this.todoServ.getTodoById('rojan', this.id).subscribe(
+        response => {
+          console.log('response by calling todo service');
+          console.log(response);
+          this.todo = response;
+        }
+      );
+    }
+      
+    }
 
   saveTodo(todo: Todo) {
     console.log(`save method called`);
-    if (todo.id !== -1) {
+    if (todo.id != -1) {
       this.todoServ.updateTodo('rojan', todo).subscribe(
         resp => {
           console.log('update method called');
           console.log(resp);
+          this.router.navigate(['todos']);
         }
       );
     } else {
@@ -47,6 +52,7 @@ export class TodoComponent implements OnInit {
         res => {
           console.log('save method called');
           console.log(res);
+          this.router.navigate(['todos']);
         }
       );
     }

@@ -25,10 +25,10 @@ export class TodoDataService {
   }
 
   updateTodo(username: string, todo: Todo) {
-    return this.http.put(`http://localhost:8085/users/${username}/todo`, todo);
+    return this.http.put(`http://localhost:8085/users/${username}/todos`, todo);
   }
 
   saveTodo(username: string, todo: Todo) {
-    return this.http.post(`http://localhost:8085/users/${username}/todo`, todo);
+    return this.http.post(`http://localhost:8085/users/${username}/todos`, todo);
   }
 }
